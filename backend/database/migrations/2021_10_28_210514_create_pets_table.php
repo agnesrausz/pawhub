@@ -16,15 +16,16 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->foreignIdFor(User::class)
                 ->nullable()
                 ->constrained();
-            $table->string('status');
-            $table->string('sex');
-            $table->string('profile_picture');
-            $table->string('species');
-            $table->string('breed');
-            $table->date('birth_date');
+            $table->string('status')->nullable();
+            $table->string('sex')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->string('species')->nullable();
+            $table->string('breed')->nullable();
+            $table->date('birth_date')->nullable();
             $table->timestamps();
         });
     }
