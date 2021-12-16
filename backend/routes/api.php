@@ -24,10 +24,12 @@ Route::post('/login', [AuthController::class,"login"]);
 
 //Public
 Route::get('/pets', [PetController::class,"getAll"]);
+Route::get('/pet/{id}', [PetController::class,"getPet"]);
 
 //Protected
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user/{id}', [UserController::class, "getUser"]);
+    Route::post('/add_pet', [PetController::class,"addPet"]);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
