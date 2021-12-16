@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import AddPet from "./components/AddPet";
 import {useState} from "react";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
                 <Navbar token={isAuthenticated} clearToken={clearToken}/>
                 <Switch>
                     <Route path='/' exact component={Home} />
+                    {/*<Route path='/pet/:id' exact component={Pet} />*/}
+
+                    <Route path='/add_pet' exact component={() => <AddPet token={isAuthenticated} />} />
                     <Route path='/login' exact render={(props) => (
                         <Login {...props} setToken={setToken} />
                     )}/>
