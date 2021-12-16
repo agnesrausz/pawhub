@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 
-function AddPet(props) {
+function AddPetForm(props) {
     // const token = props.token;
     const {register, handleSubmit} = useForm();
     const history = useHistory();
@@ -51,4 +51,4 @@ function AddPet(props) {
     );
 }
 
-export default AddPet;
+export default AddPetForm;
