@@ -1,13 +1,45 @@
+:root {
+  --background-color: var(--neonwhite3);
+  --theme-color: var(--neonyellow);
+  --neon-shadow: none;
+  --neon-shadow-hover: 0 0 30px var(--neonwhite);
+  --neon-border: none;
+  --button-color: var(--theme-color);
+  /*colors*/
+  --translucent: #00000000;
+  --black: #000000;
+  --black2: #00000080;
+  --neonwhite: #ffffff;
+  --neonwhite2: #ffffff60;
+  --neonwhite3: #ffffff10;
+  --neonyellow: #ffe692;
+  --neonyellow2: #fffe9280;
+  --neongreen: #35ff7d;
+  --neongreen2: #35ff7d80;
+  --neongreen3: #35ff7d15;
+  --neonblue: #21b5ff;
+  --neonblue2: #21b5ff80;
+  --neonpurple: #b05eff;
+  --neonpurple2: #b05eff80;
+  --neonpink: #ff19c9;
+  --neonpink2: #ff19c980;
+  --neonred: #ff1c6a;
+  --neonred2: #ff1c6a80;
+  --neonred3: #ff1c6a15;
+  --neonorange: #ff954a;
+  --neonorange2: #ff954a80;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
