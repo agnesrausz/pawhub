@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, useHistory} from "react-router-dom";
 import {Logout} from "./Logout";
+import Search from "./Search";
 
 function Navbar(props) {
 
@@ -15,16 +16,18 @@ function Navbar(props) {
         <div>
             <nav>
                 <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
+                    <li><Link className="link" to="/">Home</Link></li>
+                    <Search/>
                     {props.token ?
                         <>
-                            {/*<li><Link to="/profile/:id">Profile</Link></li>*/}
-                            <li><a href="#" onClick={onPress}>Log out</a></li>
+                            <li><Link className="link" to="/add_pet"> + </Link></li>
+                            <li><Link className="link" to="/profile/1">Profile</Link></li>
+                            <li><button className="link" onClick={onPress}>Log out</button></li>
                         </>
                         :
                         <>
-                            <li><Link to="/login">Log in</Link></li>
-                            <li><Link to="/register">Register</Link></li>
+                            <li><Link className="link" to="/login">Log in</Link></li>
+                            <li><Link className="link" to="/register">Register</Link></li>
                         </>
                     }
                 </ul>
