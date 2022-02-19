@@ -1,15 +1,15 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import axios from "axios";
+import {useHistory} from "react-router-dom";
 
-function Search(props) {
-    const {register, handleSubmit} = useForm();
+function SearchNav(props) {
+    const {register, handleSubmit, reset} = useForm();
+    const history = useHistory();
 
     const onSubmit = async (data) => {
         console.log(data)
-        let response = await axios.get(`http://localhost:8000/api/pets/find?name=${data.search}`);
-        console.log(response)
-        // props.setPets(response.data.pets)
+        history.push(`/find?name=${data.search}`);
+        reset();
     }
     return (
         <div>
@@ -22,4 +22,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default SearchNav;

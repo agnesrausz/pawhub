@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class PetController extends Controller
@@ -27,30 +28,31 @@ class PetController extends Controller
         $petId = request('id');
         $pet = Pet::find($petId);
 
-        if(!$pet){
+        if (!$pet) {
             return response([
                 "message" => "Pet not found!"
-            ],404);
+            ], 404);
         } else {
             return response([
                 "pet" => $pet
-            ],200);
+            ], 200);
         }
     }
 
-    public function addPet(Request $request){
+    public function addPet(Request $request)
+    {
         $fields = $request->validate([
             'user_id' => 'numeric',
             'name' => 'string',
             'status' => 'string',
             'sex' => 'string',
-            'profile_picture'=> 'string',
+            'profile_picture' => 'string',
             'species' => 'string',
             'breed' => 'string',
             'birth_date' => 'date'
         ]);
 
-        $pet =Pet::create([
+        $pet = Pet::create([
             "user_id" => $fields['user_id'],
             "name" => $fields['name'],
             "status" => $fields['status'],
@@ -62,9 +64,28 @@ class PetController extends Controller
         ]);
 
         $response = [
-            "pet"  => $pet,
+            "pet" => $pet,
         ];
 
-        return response($response,201);
+        return response($response, 201);
+    }
+
+    public function getPetsByName(Request $request)
+    {
+        if ($request->has('name')) {
+            $petName = $request->query('name');
+            $pets = DB::table('pets')
+                ->select('*')
+                ->where('name', 'like', '%' . $petName . '%')
+                ->get();
+            $response = [
+                "pets" => $pets
+            ];
+            return response($response, 200);
+        }
+        $response = [
+            "pets" => []
+        ];
+        return response($response, 200);
     }
 }

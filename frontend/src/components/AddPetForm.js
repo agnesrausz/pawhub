@@ -4,7 +4,6 @@ import axios from "axios";
 import {useHistory} from "react-router-dom";
 
 function AddPetForm(props) {
-    // const token = props.token;
     const {register, handleSubmit} = useForm();
     const history = useHistory();
 
@@ -13,7 +12,7 @@ function AddPetForm(props) {
         let response = await axios.post('http://localhost:8000/api/add_pet', data,
             {
                 headers: {
-                    Authorization: 'Bearer ' + props.token
+                    Authorization: 'Bearer ' + localStorage.getItem('authToken')
                 }
             });
         console.log(response)

@@ -9,8 +9,11 @@ function Login(props) {
     // console.log(props)
     const onSubmit = async (data) => {
         let response = await axios.post('http://localhost:8000/api/login', data);
+        console.log(response)
         if(response.data.token){
             localStorage.setItem('authToken',response.data.token);
+            localStorage.setItem('userID',response.data.user.id);
+            localStorage.setItem('userName',response.data.user.name);
             props.setToken(response.data.token);
             history.push('/');
         }

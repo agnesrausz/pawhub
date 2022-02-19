@@ -3,11 +3,11 @@ import axios from "axios";
 import PetCard from "./PetCard";
 
 function Home(props) {
-    const [pets, setPets] = useState([])
-
     useEffect(() => {
         fetchPets();
     }, [])
+    const [pets, setPets] = useState([])
+
 
     const fetchPets = async () => {
         const pets = await axios.get('http://localhost:8000/api/pets');
@@ -18,6 +18,7 @@ function Home(props) {
         for (let i = 0; i < petList.length; i++) {
             if (pets.length !== 0) {
                 setPets(state => [...state, petList[i]])
+                // props.setPets(state => [...state, petList[i]])
             }
         }
     }
@@ -26,9 +27,9 @@ function Home(props) {
     return (
         <div>
             <div className='title'>Pets</div>
-            {localStorage.getItem('authToken') ? <p>hello user</p> : <p>hello stranger</p>}
             <div className='pet-list'>
                 {pets.map((pet) => (
+                // {props.pets.map((pet) => (
                     <div key={pet.id}>
                         <PetCard pet={pet}/>
                     </div>

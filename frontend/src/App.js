@@ -6,9 +6,13 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import AddPetForm from "./components/AddPetForm";
 import {useState} from "react";
+import SearchPage from "./components/SearchPage";
+import Profile from "./components/Profile";
+import PetProfile from "./components/PetProfile";
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState('');
+
 
     const setToken = (token) => {
         setIsAuthenticated(token)
@@ -23,8 +27,9 @@ function App() {
             <div className="App">
                 <Navbar token={isAuthenticated} clearToken={clearToken}/>
                 <Switch>
-                    <Route path='/' exact component={Home} />
-                    {/*<Route path='/pet/:id' exact component={Pet} />*/}
+                    <Route path='/' exact component={() => <Home />} />
+                    <Route path='/find' exact component={() => <SearchPage />} />
+                    <Route path='/pet' component={PetProfile} />
 
                     <Route path='/add_pet' exact component={() => <AddPetForm token={isAuthenticated} />} />
                     <Route path='/login' exact render={(props) => (
@@ -33,7 +38,7 @@ function App() {
                     <Route path='/register' exact render={(props) => (
                         <Register {...props} setToken={setToken} />
                     )}/>
-                    {/*<Route path="/profile/:id" component={Profile}/>*/}
+                    <Route path="/profile" component={Profile}/>
                 </Switch>
             </div>
         </BrowserRouter>

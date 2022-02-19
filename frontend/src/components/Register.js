@@ -11,6 +11,8 @@ function Register(props) {
         let response = await axios.post('http://localhost:8000/api/register', data);
         if(response.data.token){
             localStorage.setItem('authToken',response.data.token);
+            localStorage.setItem('userID',response.data.user.id);
+            localStorage.setItem('userName',response.data.user.name);
             props.setToken(response.data.token);
             history.push('/');
         }

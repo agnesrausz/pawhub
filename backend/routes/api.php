@@ -25,6 +25,7 @@ Route::post('/login', [AuthController::class,"login"]);
 //Public
 Route::get('/pets', [PetController::class,"getAll"]);
 Route::get('/pet/{id}', [PetController::class,"getPet"]);
+Route::get('/pets/find', [PetController::class,"getPetsByName"]);
 
 //Protected
 Route::group(['middleware' => ['auth:sanctum']], function () {

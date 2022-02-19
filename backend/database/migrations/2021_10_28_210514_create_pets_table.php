@@ -21,7 +21,7 @@ class CreatePetsTable extends Migration
                 ->nullable()
                 ->constrained();
             $table->string('status')->nullable();
-            $table->string('sex')->nullable();
+            $table->boolean('is_male')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('species')->nullable();
             $table->string('breed')->nullable();
